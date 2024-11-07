@@ -11,7 +11,7 @@ import edu.fra.uas.service.MessageService;
 @SpringBootApplication
 public class BeanExampleApplication {
 
-	@Autowired
+	//@Autowired
 	private MessageService messageService;
 
 	public static void main(String[] args) {

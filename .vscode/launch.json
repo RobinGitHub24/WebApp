@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BeanBeispielApplication",
+            "request": "launch",
+            "mainClass": "edu.fra.uas.service.BeanBeispielApplication",
+            "projectName": "BeanExample"
+        },
+        {
+            "type": "java",
             "name": "UserApplication",
             "request": "launch",
             "mainClass": "edu.fra.uas.UserApplication",
