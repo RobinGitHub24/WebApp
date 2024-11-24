@@ -13,9 +13,6 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:if="${noten.isEmpty()}">
-                <td colspan="2">Keine Noten vorhanden</td>
-            </tr>
             <tr th:each="kursNote : ${noten}">
                 <td th:text="${kursNote.kursName}">Kursname</td>
                 <td th:text="${kursNote.note}">Note</td>
