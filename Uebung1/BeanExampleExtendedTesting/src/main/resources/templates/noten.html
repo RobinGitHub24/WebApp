@@ -5,8 +5,6 @@
 </head>
 <body>
     <h1>Notenübersicht</h1>
-
-    <!-- Tabelle zur Anzeige der Noten -->
     <table border="1">
         <thead>
             <tr>
@@ -15,15 +13,17 @@
             </tr>
         </thead>
         <tbody>
+            <tr th:if="${noten.isEmpty()}">
+                <td colspan="2">Keine Noten vorhanden</td>
+            </tr>
             <tr th:each="kursNote : ${noten}">
                 <td th:text="${kursNote.kursName}">Kursname</td>
                 <td th:text="${kursNote.note}">Note</td>
             </tr>
         </tbody>
     </table>
-
+    <p>Durchschnitt: <span th:text="${durchschnitt}">0.0</span></p>
     <h2>Neue Note hinzufügen</h2>
-    <!-- Formular zur Eingabe neuer Noten -->
     <form action="/addNote" method="post">
         <label for="kursName">Kursname:</label>
         <input type="text" id="kursName" name="kursName" required>
@@ -33,8 +33,5 @@
         <br>
         <button type="submit">Hinzufügen</button>
     </form>
-
-    <h3>Durchschnittsnote</h3>
-    <p th:text="'Durchschnitt: ' + ${durchschnitt}">Durchschnitt</p>
 </body>
 </html>
