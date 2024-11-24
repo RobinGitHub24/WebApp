@@ -8,27 +8,26 @@ import edu.fra.uas.model.User;
 import edu.fra.uas.service.UserService;
 import jakarta.annotation.PostConstruct;
 
-@Component
+@Component // Diese Annotation kennzeichnet die Klasse als Bean, die von Spring verwaltet wird
 public class InitData {
-
+// Logger-Instanz für das Protokollieren von Informationen während der Initialisierung
     private final Logger log = org.slf4j.LoggerFactory.getLogger(InitData.class);
-    
+    // Automatische Injektion des UserService, um Benutzeroperationen auszuführen
     @Autowired
     UserService userService;
-
+// Diese Methode wird nach der Konstruktion der Bean ausgeführt
     @PostConstruct
     public void init() {
-        log.debug("### Initialize Data ###");
-
+        log.debug("### Initialize Data ###");// Start der Initialisierung
         log.debug("create user admin");
-        User user = new User();
-        user.setRole("ADMIN");
+        User user = new User();// Ein neues User-Objekt wird erstellt
+        user.setRole("ADMIN");// Rolle wird auf ADMIN gesetzt
         user.setFirstName("Administrator");
         user.setLastName("Administrator");
         user.setEmail("admin@example.com");
         user.setPassword("extremeSecurePassword1234");
-        userService.createUser(user);
-
+        userService.createUser(user);// Benutzer wird über den UserService in die Datenbank eingefügt
+// Erstellung eines regulären Benutzers Alice
         log.debug("create user alice");
         user = new User();
         user.setRole("USER");
@@ -46,7 +45,7 @@ public class InitData {
         user.setEmail("bob@example.com");
         user.setPassword("bob1234");
         userService.createUser(user);
-
+        // Abschluss der Initialisierung
         log.debug("### Data initialized ###");
     }
 

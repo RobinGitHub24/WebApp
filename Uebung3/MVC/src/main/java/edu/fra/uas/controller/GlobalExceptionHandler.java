@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
 		mav.addObject("exception", exception);
 		mav.addObject("url", req.getRequestURL());
 		mav.addObject("timestamp", new Date().toString());
-		mav.addObject("status", 500);
+		mav.addObject("status", 400); //von 500 auf 400 geändert : Die Änderung sorgt dafür, dass bei fehlenden Request-Parametern ein korrekter HTTP-Statuscode 400 (Bad Request) statt des falschen 500 (Internal Server Error) zurückgegeben wird, was den Fehler präziser beschreibt.
 
 		mav.setViewName("support");
 		return mav;
