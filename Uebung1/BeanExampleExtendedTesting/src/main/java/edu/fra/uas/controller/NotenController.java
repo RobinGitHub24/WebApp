@@ -17,11 +17,12 @@ public class NotenController {
     private StudentService studentService;
 
     @GetMapping("/noten")
-    public String getNoten(Model model) {
-        model.addAttribute("noten", studentService.getStudent().getNotenListe());
-        model.addAttribute("durchschnitt", studentService.getStudent().berechneDurchschnitt());
-        return "noten"; // Render die View noten.html
-    }
+public String getNoten(Model model) {
+    model.addAttribute("noten", studentService.getStudent().getNotenListe());
+    model.addAttribute("durchschnitt", studentService.getStudent().berechneDurchschnitt());
+    return "noten"; // sicherstellen, dass es "noten.html" in src/main/resources/templates gibt
+}
+
     
 
     @PostMapping("/addNote")
