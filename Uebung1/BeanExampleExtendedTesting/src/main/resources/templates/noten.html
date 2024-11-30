@@ -5,29 +5,31 @@
 </head>
 <body>
     <h1>Notenübersicht</h1>
+
+    <h2>Notenliste</h2>
     <table border="1">
         <thead>
             <tr>
-                <th>Kursname</th>
+                <th>Kurs</th>
                 <th>Note</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="kursNote : ${noten}">
-                <td th:text="${kursNote.kursName}">Kursname</td>
-                <td th:text="${kursNote.note}">Note</td>
+            <tr th:each="note : ${noten}">
+                <td th:text="${note.kursName}"></td>
+                <td th:text="${note.note}"></td>
             </tr>
         </tbody>
     </table>
-    <p>Durchschnitt: <span th:text="${durchschnitt}">0.0</span></p>
+
+    <h3>Durchschnittsnote: <span th:text="${durchschnitt}"></span></h3>
+
     <h2>Neue Note hinzufügen</h2>
     <form action="/addNote" method="post">
         <label for="kursName">Kursname:</label>
         <input type="text" id="kursName" name="kursName" required>
-        <br>
         <label for="note">Note:</label>
-        <input type="number" id="note" name="note" step="0.1" min="1.0" max="6.0" required>
-        <br>
+        <input type="number" id="note" name="note" step="0.1" required>
         <button type="submit">Hinzufügen</button>
     </form>
 </body>

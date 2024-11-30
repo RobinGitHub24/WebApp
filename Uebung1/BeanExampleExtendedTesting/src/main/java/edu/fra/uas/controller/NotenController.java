@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.fra.uas.model.KursNote;
+import edu.fra.uas.model.Student;
 import edu.fra.uas.service.StudentService;
 
 @Controller
@@ -17,18 +18,16 @@ public class NotenController {
     private StudentService studentService;
 
     @GetMapping("/noten")
-public String getNoten(Model model) {
-    model.addAttribute("noten", studentService.getStudent().getNotenListe());
-    model.addAttribute("durchschnitt", studentService.getStudent().berechneDurchschnitt());
-    return "noten"; // sicherstellen, dass es "noten.html" in src/main/resources/templates gibt
-}
-
-    
+    public String getNoten(Model model) {
+        model.addAttribute("noten", studentService.getStudent().getNotenListe());
+        model.addAttribute("durchschnitt", studentService.getStudent().berechneDurchschnitt());
+        return "noten"; // Name des Thymeleaf-Templates
+    }
 
     @PostMapping("/addNote")
-public String addNote(@RequestParam("kursName") String kursName, @RequestParam("note") double note) {
-    studentService.getStudent().addNote(new KursNote(kursName, note));
-    return "redirect:/noten"; // Korrekt, um einen neuen GET-Request auszulösen
-}
-
+    public String addNote(@RequestParam("kursName") String kursName,
+                          @RequestParam("note") double note) {
+        studentService.getStudent().addNote(new KursNote(kursName, note));
+        return "redirect:/noten";
+    }
 }
